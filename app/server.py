@@ -9,9 +9,9 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1cW8YVSmwo6mCY_Aw4HsN7tZfpjJDw-n3'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1Oo2mzJpNxV-VS5jlq2g4zR18UdGnrWA_'
 #export_file_url = 'https://www.dropbox.com/s/6bgq8t6yextloqp/export.pkl?raw=1'
-export_file_name = 'trained_spam_model.pkl'
+export_file_name = 'export.pkl'
 
 # classes = ['black', 'grizzly', 'teddys']
 classes = ['spam', 'nospam']
