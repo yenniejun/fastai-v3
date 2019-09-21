@@ -14,15 +14,27 @@ function showPicked(input) {
   reader.readAsDataURL(input.files[0]);
 }
 
+function tryagain () {
+  // TODO make hover of TRY AGAIN bigger size
+
+  el("analyze-button").style.display="inline-block";
+  el("try-again-button").style.display="none";
+  el("result-label").innerHTML = "";
+
+  el("upload-label").innerHTML = "No file chosen";
+  el("image-picked").className = "no-display";
+}
+
 function analyze() {
   var uploadFiles = el("file-input").files;
-  if (uploadFiles.length !== 1) {
+  
+   if (uploadFiles.length !== 1) {
     alert("Please select a file to analyze!");
     return;
   }
 
-  el("analyze-button").style.display = "none";
-  el("loading-spinner").style.display="block";
+  el("loading-spinner").style.display="none";
+  el("analyze-button").style.display="none";
 
   var xhr = new XMLHttpRequest();
   var loc = window.location;
@@ -30,28 +42,34 @@ function analyze() {
   var url = `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`;
   console.log(url);
 
+
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
     true);
 
   xhr.onerror = function() {
     alert(xhr.responseText);
     console.log("ERROR");
-      el("analyze-button").style.display = "block";
+      el("analyze-button").style.display = "inline-block";
       el("loading-spinner").style.display="none";
   };
 
   xhr.onload = function(e) {
     console.log("Ready state" + this.readyState)
     if (this.readyState === 4) {
-
-      /* Hide the spinner */
-      el("analyze-button").style.display = "block";
-      el("loading-spinner").style.display="none";
-
       var response = JSON.parse(e.target.responseText);
-      el("result-label").innerHTML = `Result = ${response["result"]}`;
+
+      if (response["result"] == "spam") {
+        el("result-label").innerHTML = "This is SPAM";
+      } 
+      else {
+        el("result-label").innerHTML = "You're safe! No spam here."
+      }
+
+      // show the try again button after a short timeout
+      setTimeout (() => {
+        el("try-again-button").style.display="inline-block";
+      }, 1000);
     }
-    el("analyze-button").innerHTML = "Analyze";
   };
 
   var fileData = new FormData();

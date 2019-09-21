@@ -1,5 +1,6 @@
 body {
     background-color: #fff;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .no-display {
@@ -11,15 +12,14 @@ body {
     padding: 10px 50px;
     text-align: center;
     font-size: 14px;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .title {
-    font-size: 30px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     color: #FF9B9E;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Barriecito', cursive;
 }
 
 .content {
@@ -30,7 +30,7 @@ body {
 }
 
 .analyze {
-    margin-top: 5em;
+    margin-top: 1rem;
 }
 
 .upload-label {
@@ -40,8 +40,8 @@ body {
 
 .result-label {
     margin-top: 0.5em;
-    padding: 10px;
-    font-size: 13px;
+    padding-bottom: 3rem;
+    font-size: 2rem;
 }
 
 button.choose-file-button {
@@ -62,7 +62,7 @@ button.analyze-button {
     border-radius: 2px;
     background-color: #7052CB;
     font-size: 13px;
-    color: #ffffff;
+    color: #ffffff; 
 }
 
 button:focus {
@@ -74,6 +74,22 @@ button:focus {
     margin: auto;
 }
 
+button.try-again-button {
+    width: 200px;
+    height: 40px;
+    border: none;
+    font-size: 1rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    display: none;
+    font-family: 'Barriecito', cursive;
+}
+
+.try-again-button:hover {
+    font-weight: bolder;
+    color:black;
+    font-size: 1.1rem;
+}
 
 
 
