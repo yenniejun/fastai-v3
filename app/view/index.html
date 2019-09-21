@@ -3,13 +3,17 @@
   <meta charset='utf-8'>
   <link rel='stylesheet' href='../static/style.css'>
   <script src='../static/client.js'></script>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
 <div>
   <div class='center'>
     <div class='title'>SPAM or NOT SPAM?</div>
     <p>
-      Use images of anything you like if you are confused if something is spam or not.
+      Have you ever come across an object and needed to know if it was spam or not? 
     </p>
     <div class='content'>
       <div class='no-display'>
@@ -30,6 +34,9 @@
       <div class='analyze'>
         <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
       </div>
+
+      <div class="lds-ripple" id="loading-spinner"><div></div><div></div></div>
+
       <div class='result-label'>
         <label id='result-label'></label>
       </div>

@@ -16,18 +16,38 @@ function showPicked(input) {
 
 function analyze() {
   var uploadFiles = el("file-input").files;
-  if (uploadFiles.length !== 1) alert("Please select a file to analyze!");
+  if (uploadFiles.length !== 1) {
+    alert("Please select a file to analyze!");
+    return;
+  }
 
-  el("analyze-button").innerHTML = "Analyzing...";
+  el("analyze-button").style.display = "none";
+  el("loading-spinner").style.display="block";
+
   var xhr = new XMLHttpRequest();
   var loc = window.location;
+  console.log(loc);
+  var url = `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`;
+  console.log(url);
+
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
     true);
+
   xhr.onerror = function() {
     alert(xhr.responseText);
+    console.log("ERROR");
+      el("analyze-button").style.display = "block";
+      el("loading-spinner").style.display="none";
   };
+
   xhr.onload = function(e) {
+    console.log("Ready state" + this.readyState)
     if (this.readyState === 4) {
+
+      /* Hide the spinner */
+      el("analyze-button").style.display = "block";
+      el("loading-spinner").style.display="none";
+
       var response = JSON.parse(e.target.responseText);
       el("result-label").innerHTML = `Result = ${response["result"]}`;
     }
