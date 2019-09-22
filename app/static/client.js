@@ -1,11 +1,21 @@
 var el = x => document.getElementById(x);
 
+async function takePicture() {
+  if('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+    console.log("This will be useful later but not implemented now");
+  }
+}
+
 function showPicker() {
   el("file-input").click();
 }
 
 function showPicked(input) {
   el("upload-label").innerHTML = input.files[0].name;
+
+  // Hide the "Upload" button
+  el("image-picker-flex-container").style.display="none"
+
   var reader = new FileReader();
   reader.onload = function(e) {
     el("image-picked").src = e.target.result;
@@ -23,7 +33,13 @@ function tryagain () {
   el("upload-label").innerHTML = "No file chosen";
   el("image-picked").className = "no-display";
 
-  el("choose-file-button").visibility = "hidden";
+  el("image-picker-flex-container").style.display = "";
+
+  // Show the take picture button 
+  if('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+    el("image-picker-or-text").style.display = "";
+    el("take-picture-button").style.display = "";
+  }
 }
 
 function analyze() {
@@ -37,7 +53,6 @@ function analyze() {
   // Hide the loading spinner, the analyze button, and the choose file button
   el("loading-spinner").style.display="none";
   el("analyze-button").style.display="none";
-  el("choose-file-button").visibility = "";
 
   // Analyze the image
   var xhr = new XMLHttpRequest();

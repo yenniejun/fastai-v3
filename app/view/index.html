@@ -11,7 +11,7 @@
 <div>
   <div class='center'>
     <div class='title'>SPAM or NOT SPAM?</div>
-    <p>
+    <p class='spam-tagline'>
       Have you ever come across an object and needed to know if it was spam or not? 
     </p>
     <div class='content'>
@@ -23,10 +23,17 @@
                accept='image/*'
                onchange='showPicked(this)'>
       </div>
-      <button class='choose-file-button' id='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+
+      <div class="image-picker-flex-container" id="image-picker-flex-container">
+        <button class='choose-file-button' id='choose-file-button' type='button' onclick='showPicker()'>Upload Image</button>
+        <span id="image-picker-or-text">or</span>
+        <button class='choose-file-button' id='take-picture-button' type='button' onclick='takePicture()'>Take Image</button>
+      </div>
+
       <div class='upload-label'>
         <label id='upload-label'>No file chosen</label>
       </div>
+
       <div>
         <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
       </div>

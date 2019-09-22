@@ -44,6 +44,22 @@ body {
     font-size: 2rem;
 }
 
+.image-picker-flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+#image-picker-or-text {
+    padding: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    display:none; /*Eventually, show this only with media query*/
+}
+
+#take-picture-button {
+    display:none; /*Eventually, show this only with media query*/
+}
+
 button.choose-file-button {
     width: 200px;
     height: 40px;
@@ -89,6 +105,58 @@ button.try-again-button {
     font-weight: bolder;
     color:black;
     font-size: 1.1rem;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .title {
+        font-size: 5rem;
+        margin-top:3rem;
+    }
+
+    .spam-tagline {
+        font-size: 1.9rem;
+        margin-left: 7rem;
+        margin-right: 7rem;
+        margin-bottom: 2rem;
+    }
+
+    .content {
+        border-style: none;
+    }
+
+    button.choose-file-button {
+        width: 20rem;
+        height:20rem;
+        font-size: 2rem;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: bold;
+        padding: 1rem;
+    }
+
+    .upload-label {
+        display: none;
+    }
+
+    #analyze-button {
+        margin-top: 2.5rem;
+        font-size: 3rem;
+        width: 15rem;
+        height: 5rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    #try-again-button {
+        font-size: 2rem;
+        width: 15rem;
+        height: 5rem;
+        border-radius: 1rem;
+        font-family: 'IBM Plex Sans', sans-serif;
+        background-color: #f3e2e2;
+        padding: 0 0;
+    }
 }
 
 
