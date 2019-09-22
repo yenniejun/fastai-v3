@@ -15,7 +15,6 @@ function showPicked(input) {
 }
 
 function tryagain () {
-  // TODO make hover of TRY AGAIN bigger size
 
   el("analyze-button").style.display="inline-block";
   el("try-again-button").style.display="none";
@@ -23,6 +22,8 @@ function tryagain () {
 
   el("upload-label").innerHTML = "No file chosen";
   el("image-picked").className = "no-display";
+
+  el("choose-file-button").visibility = "hidden";
 }
 
 function analyze() {
@@ -33,16 +34,15 @@ function analyze() {
     return;
   }
 
+  // Hide the loading spinner, the analyze button, and the choose file button
   el("loading-spinner").style.display="none";
   el("analyze-button").style.display="none";
+  el("choose-file-button").visibility = "";
 
+  // Analyze the image
   var xhr = new XMLHttpRequest();
   var loc = window.location;
-  console.log(loc);
   var url = `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`;
-  console.log(url);
-
-
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
     true);
 
@@ -65,7 +65,7 @@ function analyze() {
         el("result-label").innerHTML = "You're safe! No spam here."
       }
 
-      // show the try again button after a short timeout
+      // Show the try again button after a short timeout
       setTimeout (() => {
         el("try-again-button").style.display="inline-block";
       }, 1000);
